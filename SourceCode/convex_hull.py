@@ -1,5 +1,3 @@
-import random
-
 class Solution:
     def divide(self, convex_hull, start: int, end: int):
         if end - start < 3:
