@@ -29,13 +29,30 @@ class Solution:
             
             lower_boundery.append(tuple(point))
             upper_boundery.append(tuple(point))   
+            #start
+            e1 = e2 = 0
+            res = []
+            while e1 < len(lower_boundery) and e2 < len(upper_boundery):
+                if lower_boundery[e1][0] < upper_boundery[e2][0]:
+                    res.append(lower_boundery[e1])
+                    e1 += 1
+                elif lower_boundery[e1][0] > upper_boundery[e2][0]:
+                    res.append(upper_boundery[e2])
+                    e2 += 1
+                else:
+                    if lower_boundery[e1][1] < upper_boundery[e2][1]:
+                        res.append(lower_boundery[e1])
+                        e1 += 1
+                    else:
+                        res.append(upper_boundery[e2])
+                        e2 += 1
         
-        res = map(list, list(set(lower_boundery + upper_boundery)))
+        res = map(list, list(set(res)))
         return list(res)
             
     def convexSolution(self, convex_hull):
         print("-----------------------------------------------------------------------------------------------------------------------")
-
+        convex_hull = sorted(convex_hull)
         res = self.operation(convex_hull, 0, len(convex_hull) - 1)
         print(res)
 
