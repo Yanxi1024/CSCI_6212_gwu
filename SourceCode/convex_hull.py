@@ -12,6 +12,7 @@ class Solution:
     def combine(self, left_part, right_part):
         convex_hull = left_part + right_part
         
+        # Use cross product to determine the positional relationship between point q and point p, o
         def crossPro(p, o, q):
             x1, y1 = p
             x2, y2 = o
